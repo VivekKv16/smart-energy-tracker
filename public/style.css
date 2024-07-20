@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #cbcbff;
+    color: #a8c6fe;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    color: #134670;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.5em; /* Increased font size for h1 */
+  }
+  
+  .sensor-container {
+    margin: 20px;
+    padding: 20px;
+    border: 5px solid #020202ad;
+    border-radius: 4px;
+    background-color: #ffffff;
+  }
+  
+  .sensor-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.5em; /* Increased font size for sensor title */
+    color: #0066cc; /* Standard color for titles */
+  }
+  
+  .sensor-container div {
+    font-size: 1.2em; /* Increased font size for sensor data */
+    color: #0b0b0b; /* Standard color for text */
+  }
+  
+  #port1 {
+    border-left: 15px solid #e2872d; /* Standard color for port 1 */
+    padding-left: 100px;
+  }
+  
+  #port2 {
+    border-left: 15px solid #3399ff; /* Standard color for port 2 */
+    padding-left: 100px;
+  }
+  

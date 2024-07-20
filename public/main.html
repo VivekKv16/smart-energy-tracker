@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .sensor-container {
+            margin-bottom: 20px;
+        }
+        .sensor-title {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sensor Data</h1>
+    <div class="sensor-container">
+        <div class="sensor-title">Port 1</div>
+        <div id="port1">
+            <div>Value: <span id="value1"></span></div>
+            <div>Watt: <span id="watt1"></span></div>
+            <div>Power: <span id="power1"></span></div>
+        </div>
+    </div>
+    <div class="sensor-container">
+        <div class="sensor-title">Port 2</div>
+        <div id="port2">
+            <div>Value: <span id="value2"></span></div>
+            <div>Watt: <span id="watt2"></span></div>
+            <div>Power: <span id="power2"></span></div>
+        </div>
+    </div>
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('/data');
+                const data = await response.json();
+                document.getElementById('value1').textContent = data.port1.value;
+                document.getElementById('watt1').textContent = data.port1.watt;
+                document.getElementById('power1').textContent = data.port1.power;
+                document.getElementById('value2').textContent = data.port2.value;
+                document.getElementById('watt2').textContent = data.port2.watt;
+                document.getElementById('power2').textContent = data.port2.power;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        setInterval(fetchData, 1000);
+    </script>
+</body>
+</html>

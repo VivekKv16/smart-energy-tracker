@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirected Sensor Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .sensor-container {
+            margin-bottom: 20px;
+        }
+        .sensor-title {
+            font-weight: bold;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Redirected Sensor Data</h1>
+    <div class="sensor-container">
+        <div class="sensor-title">Port 1</div>
+        <div id="port1">
+            <div>Value: <span id="value1"></span></div>
+            <div>Watt: <span id="watt1"></span></div>
+            <div>Power: <span id="power1"></span></div>
+        </div>
+    </div>
+    <div class="sensor-container">
+        <div class="sensor-title">Port 2</div>
+        <div id="port2">
+            <div>Value: <span id="value2"></span></div>
+            <div>Watt: <span id="watt2"></span></div>
+            <div>Power: <span id="power2"></span></div>
+        </div>
+    </div>
+    <h2>Raw JSON Data</h2>
+    <pre id="jsonData"></pre>
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const data = urlParams.get('data');
+
+            if (data) {
+                const sensorData = JSON.parse(decodeURIComponent(data));
+                document.getElementById('value1').textContent = sensorData.port1.value;
+                document.getElementById('watt1').textContent = sensorData.port1.watt;
+                document.getElementById('power1').textContent = sensorData.port1.power;
+                document.getElementById('value2').textContent = sensorData.port2.value;
+                document.getElementById('watt2').textContent = sensorData.port2.watt;
+                document.getElementById('power2').textContent = sensorData.port2.power;
+
+                // Display the raw JSON data
+                document.getElementById('jsonData').textContent = JSON.stringify(sensorData, null, 2);
+            }
+        }
+    </script>
+</body>
+</html>
